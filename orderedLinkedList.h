@@ -208,7 +208,7 @@ void orderedLinkedList<Type>::mergeLists(orderedLinkedList<Type> &list1,orderedL
             if (list1.isEmptyList()){
                 lowest=list2.front();
                 list2.deleteNode(lowest);
-            } else if (list2.isEmptyList()){
+            } else {
                 lowest=list1.front();
                 list1.deleteNode(lowest);
             }

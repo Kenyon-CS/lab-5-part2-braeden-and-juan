@@ -10,9 +10,58 @@
 #include "orderedLinkedList.h"                  //Line 2
 
 using namespace std;                            //Line 3
+void testmerge(){
+     // Merging two non-empty ordered lists results in a single ordered list
+     // Test merging two non-empty ordered lists
+     orderedLinkedList<int> list1;
+     orderedLinkedList<int> list2;
+     list1.insertLast(1);
+     list1.insertLast(3);
+     list1.insertLast(5);
+     list2.insertLast(2);
+     list2.insertLast(4);
+     list2.insertLast(6);
 
+     orderedLinkedList<int> mergedList;
+     mergedList.mergeLists(list1, list2);
+
+     assert(mergedList.front() == 1);
+     mergedList.deleteNode(1);
+     assert(mergedList.front() == 2);
+     mergedList.deleteNode(2);
+     assert(mergedList.front() == 3);
+     mergedList.deleteNode(3);
+     assert(mergedList.front() == 4);
+     mergedList.deleteNode(4);
+     assert(mergedList.front() == 5);
+     mergedList.deleteNode(5);
+     assert(mergedList.front() == 6);
+     mergedList.deleteNode(6);
+     assert(mergedList.isEmptyList());
+
+     // Test merging two empty lists
+     orderedLinkedList<int> emptyList1;
+     orderedLinkedList<int> emptyList2;
+
+     emptyList1.mergeLists(emptyList1, emptyList2);
+
+     // Check if the merged list is empty
+     assert(emptyList1.isEmptyList());
+
+     // Test merging one empty list with a non-empty list
+     orderedLinkedList<int> nonEmptyList;
+     nonEmptyList.insertLast(5);
+
+     emptyList1.mergeLists(emptyList1, nonEmptyList);
+
+     // Check if the merged list is the same as the non-empty list
+     assert(!emptyList1.isEmptyList());
+     assert(emptyList1.front() == 5);
+}
 int main()                                      //Line 4
 {
+     testmerge();
+     cout << "Preset tests passed successfully" << endl;
     orderedLinkedList<int> list1, list2;        //Line 5
     int num;                                    //Line 6
 
