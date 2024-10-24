@@ -47,6 +47,13 @@ public:
       //    of the new list, and count is decremented by 1. If
       //    deleteItem is not in the list, an appropriate message
       //    is printed.
+
+    void mergeLists(orderedLinkedList<Type> &list1,
+         orderedLinkedList<Type> &list2);
+    //This function creates a new list by merging the
+    //elements of list1 and list2.
+    //Postcondition: first points to the merged list; list1
+    // and list2 are empty
 };
 
 template <class Type>
@@ -191,5 +198,31 @@ void orderedLinkedList<Type>::deleteNode(const Type& deleteItem)
     }
 }//end deleteNode
 
+template<class Type>
+void orderedLinkedList<Type>::mergeLists(orderedLinkedList<Type> &list1,orderedLinkedList<Type> &list2){
+    // We will execute a loop until we have emptied both component lists
+    while (!list1.isEmptyList() || !list2.isEmptyList()){
+        
+        Type lowest; 
+        if (list1.isEmptyList() || list2.isEmptyList()){
+            if (list1.isEmptyList()){
+                lowest=list2.front();
+                list2.deleteNode(lowest);
+            } else if (list2.isEmptyList()){
+                lowest=list1.front();
+                list1.deleteNode(lowest);
+            }
+        } else {
+            if (list1.front() <= list2.front()){
+                lowest=list1.front();
+                list1.deleteNode(lowest);
+            } else {
+                lowest=list2.front();
+                list2.deleteNode(lowest);
+            }
+        }
+        this->insertLast(lowest);
+    }
+}
 
 #endif

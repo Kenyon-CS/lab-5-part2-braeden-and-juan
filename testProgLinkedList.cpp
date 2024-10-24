@@ -38,18 +38,24 @@ int main()                                      //Line 4
     list2.print();                              //Line 20
     cout << endl;                               //Line 21
 
-    cout << "Line 22: Enter the number to be "
-         << "deleted: ";                        //Line 22
-    cin >> num;                                 //Line 23
-    cout << endl;                               //Line 24
+//     cout << "Line 22: Enter the number to be "
+//          << "deleted: ";                        //Line 22
+//     cin >> num;                                 //Line 23
+//     cout << endl;                               //Line 24
 
-    list2.deleteNode(num);                      //Line 25
+//     list2.deleteNode(num);                      //Line 25
 
-    cout << "Line 26: After deleting "
-         << num << ", list2: " << endl;         //Line 26
-    list2.print();                              //Line 27
-    cout << endl;                               //Line 28
+//     cout << "Line 26: After deleting "
+//          << num << ", list2: " << endl;         //Line 26
+//     list2.print();                              //Line 27
+//     cout << endl;                               //Line 28
+    orderedLinkedList<int> newlist;                //Line 29
+    newlist.mergeLists(list1,list2);               //Line 30
+    cout << "List after merging is " << endl;      //Line 31
+    newlist.print();                               //Line 32  
+    
 
-    return 0;					                //Line 29
-}                                               //Line 30
+
+    return 0;					                //Line 33
+}                                               //Line 34
 
