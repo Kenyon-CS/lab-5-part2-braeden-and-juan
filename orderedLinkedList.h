@@ -202,9 +202,9 @@ template<class Type>
 void orderedLinkedList<Type>::mergeLists(orderedLinkedList<Type> &list1,orderedLinkedList<Type> &list2){
     // We will execute a loop until we have emptied both component lists
     while (!list1.isEmptyList() || !list2.isEmptyList()){
-        
         Type lowest; 
         if (list1.isEmptyList() || list2.isEmptyList()){
+            // If one of the lists is empty, remove the lowest element from the non-empty list
             if (list1.isEmptyList()){
                 lowest=list2.front();
                 list2.deleteNode(lowest);
@@ -213,6 +213,7 @@ void orderedLinkedList<Type>::mergeLists(orderedLinkedList<Type> &list1,orderedL
                 list1.deleteNode(lowest);
             }
         } else {
+            // Compare the front elements of both lists and remove the lowest element
             if (list1.front() <= list2.front()){
                 lowest=list1.front();
                 list1.deleteNode(lowest);
@@ -221,8 +222,8 @@ void orderedLinkedList<Type>::mergeLists(orderedLinkedList<Type> &list1,orderedL
                 list2.deleteNode(lowest);
             }
         }
+        // Insert the lowest element into the merged list
         this->insertLast(lowest);
     }
 }
-
 #endif
